@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>List_Cars</title>
+    <title>List_Users</title>
     <style>
         table {
             border-collapse: collapse;
@@ -22,17 +22,17 @@
     </style>
 </head>
 <body>
-<h1>CARS</h1>
+<h1>USERS</h1>
 <table>
     <tr>
-        <th>Model</th>
-        <th>Year</th>
-        <th>Max Speed</th>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Email</th>
     </tr>
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.year}"></td>
-        <td th:text="${car.maxSpeed}"></td>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.email}"></td>
     </tr>
 </table>
 </body>
