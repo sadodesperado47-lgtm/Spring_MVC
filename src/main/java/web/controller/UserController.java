@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String getUsers(Model model) {
-        List<User> users = userService.getAllUsers(); // получаете список пользователей
+        List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "users"; // имя файла: users.html
     }
