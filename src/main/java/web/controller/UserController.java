@@ -2,16 +2,18 @@ package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import web.model.User;
 import web.service.UserService;
+
 import java.util.List;
 
-
 @Controller
+@RequestMapping("/users")
 public class UserController {
+
     private final UserService userService;
 
     @Autowired
@@ -20,10 +22,15 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String getUser(@RequestParam(value = "count", required = false) Integer count, ModelMap modelMap) {
-        int displayCount = (count == null) ? 5 : count;
-        List<User> car = userService.getUsers(displayCount);
-        modelMap.addAttribute("cars", car);
-        return "user";
+    public String getUsers(Model model) {
+        List<User> users = userService.getAllUsers(); // получаете список пользователей
+        model.addAttribute("users", users);
+        return "users"; // имя файла: users.html
     }
+    @GetMapping
+    public String getUsersPage(Model model) {
+
+        return "users";
+    }
+
 }
