@@ -30,7 +30,6 @@ public class UserDAOImpl implements UserDAO {
         if (user != null) {
             entityManager.remove(user);
         }
-
         return user;
     }
 

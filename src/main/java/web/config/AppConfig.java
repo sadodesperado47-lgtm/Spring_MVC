@@ -53,7 +53,5 @@ public class AppConfig {
     @Bean
     public JpaTransactionManager transactionManager() {
         return new JpaTransactionManager();
-        // Spring автоматически внедрит EntityManagerFactory из билдера,
-        // потому что его название совпадает по стандарту
     }
 }

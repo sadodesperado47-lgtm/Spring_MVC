@@ -3,12 +3,9 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -21,16 +18,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
-    public String getUsers(Model model) {
-        List<User> users = userService.getAllUsers();
-        model.addAttribute("users", users);
-        return "users"; // имя файла: users.html
-    }
     @GetMapping
-    public String getUsersPage(Model model) {
-
-        return "users";
+    public String getUsers(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "users"; // имя шаблона (users.html)
     }
 
+    @PostMapping
+    public String addUser(@ModelAttribute("user") User user) {
+        userService.addUser(user);
+        return "redirect:/users";
+    }
+    @GetMapping("/delete/{id}")
+    public String removeUser(@PathVariable Long id) {
+        userService.removeUser(id);
+        return "redirect:/users";
+    }
 }

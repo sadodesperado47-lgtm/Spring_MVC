@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>USERS</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            width: 200px;
+            height: 40px;
+            border: 1px solid black;
+            padding: 8px;
+            font-size: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        form input, form button {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+<h1>USERS</h1>
+<form th:action="@{/users}" method="post">
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="text" name="lastname" placeholder="Last name" required />
+    <input type="email" name="email" placeholder="E-Mail" required />
+    <button type="submit">Add User</button>
+</form>
+<br>
+</body>
+</html>
